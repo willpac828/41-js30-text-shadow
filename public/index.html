@@ -35,6 +35,31 @@
   </style>
 
 <script>
+  const hero = document.querySelector('.hero');
+  const text = hero.querySelector('h1');
+  const walk = 100;
+  // 100px
+
+  function shadow(e) {
+    // traditional way below
+    // const width = hero.offsetWidth;
+    // const height = hero.offsetHeight;
+
+    // es6 destructuring way below
+    // format is const { objectPropertyName1 : varName, objectPropertyName2 : varName2 } = objectName;
+    const { offsetWidth : width, offsetHeight : height } = hero;
+    let { offsetX : x, offsetY : y } = e;
+
+    //  ^^^this is what we're listening on. e.target is what the event is triggering on
+    if (this !== e.target) {
+      x = x + e.target.offsetLeft;
+      y = y + e.target.offsetTop;
+
+    }
+    console.log(x, y);
+  }
+
+  hero.addEventListener('mousemove', shadow);
 </script>
 </body>
 </html>
