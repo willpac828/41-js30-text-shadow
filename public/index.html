@@ -56,7 +56,15 @@
       y = y + e.target.offsetTop;
 
     }
-    console.log(x, y);
+    const xWalk = Math.round((x / width * 100 ) - (walk / 2));
+    const yWalk = Math.round((y / height * 100 ) - (walk / 2));
+    // how far over or down we are, divided by total width/height * walk. Then subtract half the walk, so that range is -50 to +50
+    console.log(xWalk, yWalk);
+    text.style.textShadow = `
+    ${xWalk}px ${yWalk}px 0 red,
+    ${xWalk * -1 }px ${yWalk * -1}px 0 green
+    `;
+
   }
 
   hero.addEventListener('mousemove', shadow);
